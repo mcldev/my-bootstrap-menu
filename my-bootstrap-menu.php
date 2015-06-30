@@ -2,7 +2,7 @@
 /**
  * Plugin Name: My Bootstrap Menu
  * Plugin URI: https://github.com/mcldev/my-bootstrap-menu
- * Description: Boostraps a menu using flexible and easy to use settings. Fully customizable for advanced users - including set ids and classes.
+ * Description: Boostraps a menu using flexible and easy to use settings. Fully customizable for advanced users.
  * Version: 1.0
  * Author: Michael Carder
  * Author URI: http://www.michaelcarder.com
