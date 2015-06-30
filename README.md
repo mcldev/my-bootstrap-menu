@@ -59,17 +59,17 @@ Fully customizable labels, logos, icons, formatting and alignment make this the 
 
 My Bootstrap Menu can be installed in a few easy steps:
 
-** Either: **
+#### Either:
 
 1. Search for the 'My Bootstrap Menu' plugin via Wordpress Admin > Plugins > Add New
 2. Install with the 'Install Now' button
 
-** Or: **
+#### Or:
 
 1. Unzip "My Bootstrap Menu" and put all files into a folder like "/wp-content/plugins/my-bootstrap-menu/"
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
-** Then... **
+#### Then...
 
 3. Inside Wordpress admin, go to Appearance > My Bootstrap Menu
 4. Select which menu or location to Bootstrap and select the checkbox: 'Bootstrap this menu'
