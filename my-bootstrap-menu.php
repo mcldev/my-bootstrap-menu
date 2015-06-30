@@ -61,7 +61,7 @@ require_once(MY_BOOTSTRAP_MENU_PLUGIN_INC . '/nav-menu/nav-menu-consts.php');
  * Debug if required here
  * *******************************************
  */
-$MY_PLUGIN_ENABLE_DEBUG = true;
+$MY_PLUGIN_ENABLE_DEBUG = false;
 global $MY_BOOTSTRAP_MENU_DEBUG;
 
 if( $MY_PLUGIN_ENABLE_DEBUG ){
