@@ -1,12 +1,27 @@
 <?php
-/*
-Plugin Name: My Bootstrap Menu
-Plugin URI: https://github.com/mcldev/my-bootstrap-menu
-Description: Boostraps a menu using flexible and easy to use settings. Fully customizable for advanced users - including set ids and classes.
-Version: 1.0
-Author: Michael Carder
-Author URI: http://www.michaelcarder.com
-License: GPL3
+/**
+ * Plugin Name: My Bootstrap Menu
+ * Plugin URI: https://github.com/mcldev/my-bootstrap-menu
+ * Description: Boostraps a menu using flexible and easy to use settings. Fully customizable for advanced users - including set ids and classes.
+ * Version: 1.0
+ * Author: Michael Carder
+ * Author URI: http://www.michaelcarder.com
+ * License: GPL3
+ *
+ * Copyright (C) 2015, Michael Carder Ltd, contact@michaelcarder.co.uk
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
