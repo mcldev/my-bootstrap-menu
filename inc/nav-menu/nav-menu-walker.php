@@ -40,6 +40,8 @@ class My_Bootstrap_Menu_Nav_Menu_Walker extends Walker_Nav_Menu {
         }
 
         $args->items_wrap = $items_wrap;
+        if($this->settings->override_fallback_menu)
+            $args->fallback_cb = array($this, 'fallback');
     }
 
     /**

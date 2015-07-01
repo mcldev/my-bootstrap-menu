@@ -110,8 +110,9 @@ class My_Bootstrap_Menu_Nav_Menu_Filters
         //If no menu options then load theme location options
         if(isset($menu_themes['theme'])){
             if($this->settings->load_options($menu_themes['theme']))
-                if($this->settings->bootstrap_this_menu && isset($menu_themes['menu']))
-                    return true;    //Only return true if this theme location is set and there IS a menu set to that theme location
+                if($this->settings->bootstrap_this_menu &&
+                    (isset($menu_themes['menu']) || $this->settings->override_fallback_menu))
+                    return true;    //Only return true if this theme location has a menu set OR the override fallback is set
         }
 
         //If no settings return false
