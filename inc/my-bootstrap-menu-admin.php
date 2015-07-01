@@ -20,10 +20,10 @@ class My_Bootstrap_Menu_Admin extends My_Plugin_Admin
 
         //Add the Admin Settings page config
         $args['parent_slug'] = My_Plugin_Settings_Page_Location::Appearance;
-        $args['page_title'] = "My Bootstrap Menu Settings<div class='my_bootstrap_menu_logo'>B</div>"; //the logo 'B' is added here
+        $args['page_title'] = "My Bootstrap Menu Settings <div class='my_bootstrap_menu_logo'>B</div>"; //the logo 'B' is added here
         $args['page_icon_url'] = plugins_url('img/mcl_logo_small.png', __FILE__);
         $args['menu_title'] = 'My Bootstrap Menu';
-        $args['summary_text'] = "Applies the <a target='_blank' href='http://getbootstrap.com/'>Bootstrap</a> theme to a menu - by name or by theme location. <p style='text-align: right'>Built by <a target='_blank' href='http://www.michaelcarder.com'>Michael Carder Ltd</a>. More information here:  <a target='_blank' href='http://www.codetoolbox.net/wordpress/wordpress-plugins/my-bootstrap-menu/'>My Bootstrap Menu</a></p>";
+        $args['summary_text'] = "Applies the <a target='_blank' href='http://getbootstrap.com/'>Bootstrap</a> theme to a menu - by name or by theme location. <span style='text-align: right'>Built by <a target='_blank' href='http://www.michaelcarder.com'>Michael Carder Ltd</a>, for more information see:  <a target='_blank' href='http://www.codetoolbox.net/wordpress/wordpress-plugins/my-bootstrap-menu/'>My Bootstrap Menu</a></span>";
         $args['user_capability'] = 'manage_options';
         $args['main_menu_icon_url'] = null;
         $args['main_menu_position'] = '1';

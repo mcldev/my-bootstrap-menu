@@ -11,6 +11,7 @@
     background-color: #6f5499 ;
     background-image: linear-gradient(to bottom,#563d7c 0,#6f5499 100%);
     padding: 10px;
+    box-shadow: 5px 5px 5px #888888;
 
 }
 
@@ -30,6 +31,13 @@
     line-height: 1.4;
     font-weight: 300;
     text-shadow: 0 1px 0 rgba(0,0,0,.1);
+}
+.my_plugin_title_bar a{
+    text-decoration: none;
+    font-weight: bold;
+}
+.my_plugin_title_bar a:hover {
+    background-color: #dbdbdb;
 }
 
 .my_bootstrap_menu_logo {
