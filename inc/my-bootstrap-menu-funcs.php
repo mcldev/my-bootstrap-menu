@@ -93,6 +93,8 @@ class My_Bootstrap_Menu_Funcs{
     {
         //Get all menu locations
         $menu_locations = get_nav_menu_locations();
+        if(!array_key_exists($theme_location, $menu_locations))
+            return;
         $menu_id_at_location = $menu_locations[$theme_location];
         if ($menu_id_at_location > 0)
              return wp_get_nav_menu_object($menu_id_at_location);
