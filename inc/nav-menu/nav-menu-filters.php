@@ -103,13 +103,15 @@ class My_Bootstrap_Menu_Nav_Menu_Filters
         //Get settings for menu first...as this takes precedence
         if(isset($menu_themes['menu'])) {
             if ($this->settings->load_options($menu_themes['menu']))
-                return $this->settings->bootstrap_this_menu;
+                if($this->settings->bootstrap_this_menu)
+                    return true;     //Only return if this menu is set to true... else check the theme below
         }
 
         //If no menu options then load theme location options
         if(isset($menu_themes['theme'])){
             if($this->settings->load_options($menu_themes['theme']))
-                return $this->settings->bootstrap_this_menu;
+                if($this->settings->bootstrap_this_menu && isset($menu_themes['menu']))
+                    return true;    //Only return true if this theme location is set and there IS a menu set to that theme location
         }
 
         //If no settings return false
