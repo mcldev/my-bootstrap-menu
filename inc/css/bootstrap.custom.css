@@ -9,10 +9,12 @@ Additional formatting to fix Nav Menus using
     margin-right: -20px;
     margin-top: -5px;
 }
+
 ul.nav-pills{
     float:none ;
 }
-.nav span,
-.nav i[class*="glyphicon-"] {
+
+.nav i[class*="glyphicon-"],
+.nav span[class*="glyphicon-"]{
     padding-right: 5px ;
 }

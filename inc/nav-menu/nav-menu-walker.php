@@ -207,7 +207,7 @@ class My_Bootstrap_Menu_Nav_Menu_Walker extends Walker_Nav_Menu {
 
             //Closing tags
             //***********************************************
-            $item_output .= ( $args->has_children && 0 === $depth ) ? "{$this->display_caret()} </a>" : '</a>';
+            $item_output .= ( $args->has_children && 0 === $depth ) ? "{$this->display_caret()}</a>" : '</a>';
             $item_output .= $args->after;
 
             //Return value to next filter
