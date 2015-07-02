@@ -344,17 +344,13 @@ abstract class My_Plugin_Settings_Admin extends My_Plugin_Settings_Base
      */
     private function basic_settings_validation($input)
     {
-        global $MY_BOOTSTRAP_MENU_DEBUG;
-
-        //Get the default / current values
+         //Get the default / current values
         $validated_input = $this->get_settings_values();
 
         // Loop through each of the incoming options and put into the validated options
         foreach ($validated_input as $key => $value) {
 
-            if (isset($MY_BOOTSTRAP_MENU_DEBUG)) $MY_BOOTSTRAP_MENU_DEBUG->MSG('setting key value: ' . $key . ' with input type: ' . $this->get_settings_node($key)->input_type, null, null, '', 0);
-
-            switch ($this->get_settings_node($key)->input_type) {
+             switch ($this->get_settings_node($key)->input_type) {
                 case My_Plugin_Settings_Input_Type::Checkbox:
                     //NB: forms do not return a value for unchecked options, however false is a value...!!
                     $validated_input[$key] = (array_key_exists($key, $input)) ? $input[$key] : false;

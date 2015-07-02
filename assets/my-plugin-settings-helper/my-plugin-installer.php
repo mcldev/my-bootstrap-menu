@@ -110,10 +110,6 @@ class My_Plugin_Installer
 
     public static function register_uninstall_db_name($settings_db_name)
     {
-
-        global $MY_BOOTSTRAP_MENU_DEBUG;
-        if(isset($MY_BOOTSTRAP_MENU_DEBUG)) $MY_BOOTSTRAP_MENU_DEBUG->MSG('Registering settings db name for uninstall: ' . $settings_db_name);
-
         $uninstall_db_name = static::get_uninstall_db_name();
         $current_db_names = get_option($uninstall_db_name);
         $current_db_names[$settings_db_name] = $settings_db_name;
@@ -131,12 +127,8 @@ class My_Plugin_Installer
                                                    $option_settings_db_names,
                                                    $delete_saved_settings = true)
     {
-        global $MY_BOOTSTRAP_MENU_DEBUG;
-
         if(is_array($option_settings_db_names)) {
             foreach ($option_settings_db_names as $unique_db_name) {
-
-                if(isset($MY_BOOTSTRAP_MENU_DEBUG)) $MY_BOOTSTRAP_MENU_DEBUG->MSG('Uninstalling settings db name: ' . $unique_db_name . ' for option group: ' . $option_group_page_name);
 
                 //Unregister each setting for each unique id
                 unregister_setting($option_group_page_name, // settings page group
@@ -148,9 +140,6 @@ class My_Plugin_Installer
                 }
             }
         } else {
-
-            if(isset($MY_BOOTSTRAP_MENU_DEBUG)) $MY_BOOTSTRAP_MENU_DEBUG->MSG('Uninstalling: ' . $option_settings_db_names);
-
             //Unregister settings
             unregister_setting($option_group_page_name,     // settings page group
                                 $option_settings_db_names); // settings db name - can change with unique id
