@@ -3,7 +3,7 @@
  * My_Plugin_Admin_Notice
  * Michael Carder
  */
-//namespace My_Plugin_Settings_Helper\Admin;
+namespace My_Bootstrap_Menu_Plugin_Helper {
 
 
     class My_Plugin_Admin_Notice
@@ -49,4 +49,4 @@
         }
     }
 
-
+}

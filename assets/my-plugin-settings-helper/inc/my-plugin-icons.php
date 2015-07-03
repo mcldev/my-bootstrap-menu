@@ -5,14 +5,15 @@
  * Date: 18/06/2015
  * Time: 11:15
  */
-
-abstract class My_Plugin_Dashicons{
-
-    public static function get_dashicon_list()
+namespace My_Bootstrap_Menu_Plugin_Helper {
+    abstract class My_Plugin_Dashicons
     {
-        //https://developer.wordpress.org/resource/dashicons/#lock
 
-        $html = "<div id='my_plugin_dashicon-select_overlay'>
+        public static function get_dashicon_list()
+        {
+            //https://developer.wordpress.org/resource/dashicons/#lock
+
+            $html = "<div id='my_plugin_dashicon-select_overlay'>
 
                     <div id='my_plugin_dashicon-select_list'>
                         <span class='my_plugin_close_me dashicons dashicons-no-alt'></span>
@@ -299,13 +300,13 @@ abstract class My_Plugin_Dashicons{
                     </div>
 
                 </div>";
-        
-        return $html;
-    }
-    
-    public static function get_glyphicons_list()
-    {
-        $html = "<div id='my_plugin_glyphicon-select_overlay'>
+
+            return $html;
+        }
+
+        public static function get_glyphicons_list()
+        {
+            $html = "<div id='my_plugin_glyphicon-select_overlay'>
 
                     <div id='my_plugin_glyphicon-select_list'>
 
@@ -579,6 +580,7 @@ abstract class My_Plugin_Dashicons{
 
                     </div>
               </div>";
-        return $html;
+            return $html;
+        }
     }
 }
