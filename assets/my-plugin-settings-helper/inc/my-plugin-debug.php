@@ -8,7 +8,7 @@
  *
  */
 
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
     /*
      * Debug messages to a Log File - handles messages, provides call stack for functions and can print_r for variables
     */

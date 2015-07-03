@@ -6,7 +6,7 @@
  * Time: 14:30
  */
 
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
 
 
     class My_Plugin_Admin_Page

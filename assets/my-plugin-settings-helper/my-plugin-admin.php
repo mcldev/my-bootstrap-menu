@@ -7,7 +7,7 @@
  *
  * http://codex.wordpress.org/Settings_API
  */
-namespace My_Bootstrap_Menu_Plugin_Helper
+namespace My_Bootstrap_Menu_Plugin_Namespace
 {
     if (!defined(__NAMESPACE__ . '\MY_PLUGIN_SETTINGS_PATH'))
         define(__NAMESPACE__ . '\MY_PLUGIN_SETTINGS_PATH', dirname(__FILE__));

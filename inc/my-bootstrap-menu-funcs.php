@@ -6,7 +6,7 @@
  * Time: 18:24
  */
 
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
 
 
     /**

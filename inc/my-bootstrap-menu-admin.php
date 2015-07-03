@@ -5,7 +5,7 @@
  * Date: 10/06/2015
  * Time: 22:26
  */
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
 
     class My_Bootstrap_Menu_Admin extends My_Plugin_Admin
     {

@@ -5,7 +5,7 @@
  * Date: 18/06/2015
  * Time: 11:15
  */
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
     abstract class My_Plugin_Dashicons
     {
 

@@ -12,7 +12,7 @@
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
 
     class My_Bootstrap_Menu_Nav_Menu_Walker extends \Walker_Nav_Menu
     {

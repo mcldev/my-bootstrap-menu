@@ -6,7 +6,7 @@
  * Time: 10:38
  */
 
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
 
     /**
      * Wraps the settings and config for the plugin

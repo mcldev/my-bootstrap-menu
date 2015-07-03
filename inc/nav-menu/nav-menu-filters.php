@@ -6,7 +6,7 @@
  * Time: 14:45
  */
 
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
 
 
     class My_Bootstrap_Menu_Nav_Menu_Filters

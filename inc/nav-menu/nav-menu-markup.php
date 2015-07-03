@@ -13,7 +13,7 @@
  * Class My_Bootstrap_Menu_Nav_Menu_Markup
  * 
  */
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
 
     class My_Bootstrap_Menu_Nav_Menu_Markup
     {

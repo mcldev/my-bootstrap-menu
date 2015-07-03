@@ -6,7 +6,7 @@
  * Time: 11:08
  */
 
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
     /**
      * The base class for handling settings (options) to save and load from WP db..
      *  also defines abstract magic methods to access the settings e.g. settings->my_setting so it is the same for Admin and Public versions.

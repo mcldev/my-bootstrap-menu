@@ -5,7 +5,7 @@
  * Date: 3/06/2015
  * Time: 18:35
  */
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
     /**
      * Class My_Plugin_Section_Node
      * http://codex.wordpress.org/Function_Reference/add_settings_section

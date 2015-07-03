@@ -6,7 +6,7 @@
  * Time: 10:41
  */
 
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
 
     /*
      * The public class has everything that is needed for the frontend site where the menus will be bootstrapped.

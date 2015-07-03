@@ -6,7 +6,7 @@
  * Time: 21:15
  * http://getbootstrap.com/components/#nav
  */
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
 
     abstract class My_Bootstrap_Menu_Nav_Menu_Consts
     {

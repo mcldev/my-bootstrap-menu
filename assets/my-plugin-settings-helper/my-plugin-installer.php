@@ -5,7 +5,7 @@
  * Date: 28/06/2015
  * Time: 11:53
  */
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
 
     defined('ABSPATH') OR exit;
 

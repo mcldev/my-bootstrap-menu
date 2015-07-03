@@ -5,7 +5,7 @@
  * Date: 12/06/2015
  * Time: 15:59
  */
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
     /**
      * Class My_Plugin_Input_Forms
      * A static class to manage the basic html building of input forms, settings and sections

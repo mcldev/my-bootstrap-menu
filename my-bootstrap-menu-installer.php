@@ -5,7 +5,7 @@
  * Date: 29/06/2015
  * Time: 10:59
  */
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
 
     require_once(MY_BOOTSTRAP_MENU_PLUGIN_ASSETS . '/my-plugin-settings-helper/my-plugin-installer.php');
 

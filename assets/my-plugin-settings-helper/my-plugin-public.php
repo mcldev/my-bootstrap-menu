@@ -5,7 +5,7 @@
  * Date: 28/06/2015
  * Time: 14:16
  */
-namespace My_Bootstrap_Menu_Plugin_Helper {
+namespace My_Bootstrap_Menu_Plugin_Namespace {
 
     if ( !defined(__NAMESPACE__ . '\MY_PLUGIN_SETTINGS_PATH'))
         define( __NAMESPACE__ . '\MY_PLUGIN_SETTINGS_INC_PATH', dirname( __FILE__ ) . '/inc' );
