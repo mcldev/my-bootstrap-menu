@@ -77,7 +77,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
         {
             static $plugin_data;
             if (!$plugin_data) {
-                if (defined('MY_BOOTSTRAP_MENU_PLUGIN_BASENAME') and function_exists('get_plugin_data')) {
+                if (defined(__NAMESPACE__ . '/MY_BOOTSTRAP_MENU_PLUGIN_BASENAME') and function_exists('get_plugin_data')) {
                     $plugin_data = get_plugin_data(MY_BOOTSTRAP_MENU_PLUGIN_BASENAME);
                 } else {
                     return false;
