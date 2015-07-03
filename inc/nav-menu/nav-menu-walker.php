@@ -112,11 +112,11 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
              */
 
             //TODO: Fix this for button/pills/tabs
-            if (strcasecmp($item->attr_title, 'divider') == 0 && $depth > 0) {
+            if (isset($item->attr_title ) && strcasecmp($item->attr_title, 'divider') == 0 && $depth > 0) {
                 $output .= $indent . '<li role="presentation" class="divider">';
-            } else if (strcasecmp($item->attr_title, 'dropdown-header') == 0 && $depth > 0) {
+            } else if (isset($item->attr_title ) && strcasecmp($item->attr_title, 'dropdown-header') == 0 && $depth > 0) {
                 $output .= $indent . '<li role="presentation" class="dropdown-header">' . esc_attr($item->title);
-            } else if (strcasecmp($item->attr_title, 'disabled') == 0) {
+            } else if (isset($item->attr_title ) && strcasecmp($item->attr_title, 'disabled') == 0) {
                 $output .= $indent . '<li role="presentation" class="disabled"><a href="#">' . esc_attr($item->title) . '</a>';
             } else {
 
@@ -180,12 +180,15 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                     $inner_atts_array['href'] = !empty($item->url) ? $item->url : '#';
                     $inner_atts_array['data-toggle'] = 'dropdown';
                     $inner_class .= ' dropdown-toggle';
-
-                    $inner_atts_array['aria-haspopup'] = 'true';
-                } else {
+                   $inner_atts_array['aria-haspopup'] = 'true';
+                } elseif($args->has_children) {
                     $inner_atts_array['href'] = (true == $this->settings->submenu_headings_are_links && !empty($item->url)) ? $item->url : '#';
                     /*Review here*/
                     $inner_atts_array['tabindex'] = "-1";
+                } else {
+	                $inner_atts_array['href'] = !empty($item->url) ? $item->url : '#';
+	                /*Review here*/
+	                $inner_atts_array['tabindex'] = "-1";
                 }
                 $inner_atts_array['class'] = $inner_class;
 
