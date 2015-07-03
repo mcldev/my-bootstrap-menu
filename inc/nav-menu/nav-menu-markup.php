@@ -44,20 +44,6 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
         }
 
         /**
-         * By ref change the args array values if required, i.e. Container and Menu classes
-         * @param $args
-         */
-        public function amend_arg_values(&$args)
-        {
-            $args->container = 'div';
-            $args->container_class = "{$this->unique_menu_id}_container_class";
-            $args->container_id = "{$this->unique_menu_id}_container";
-            $args->menu_class = "{$this->settings->menu_type} {$this->settings->menu_alignment} {$this->settings->submenu_dropdown_direction}";
-            $args->menu_id = "{$this->unique_menu_id}_outer_list";
-
-        }
-
-        /**
          * Main wrapper string for the nav menu object, to be used to surround the $nav output from the walker.
          *  Adds the menu icon button, search and login fields. Determines the type of menu, alignment and position.
          * @return string

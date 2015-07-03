@@ -18,10 +18,12 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
     {
 
         private $settings;
+	    private $unique_menu_id;
 
         function __construct(My_Plugin_Settings_Public $settings)
         {
             $this->settings = $settings;
+	        $this->unique_menu_id = 'menu_' . $settings->get_option_settings_db_name();
         }
 
         /**
@@ -40,8 +42,16 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                 //<ul class="nav [navbar-btn nav-pills] [navbar-left]">
                 $items_wrap = '<ul id="%1$s" class="%2$s ' . $this->settings->menu_type . ' ' . $this->settings->menu_alignment . '">%3$s</ul>';
             }
+	        $args->items_wrap = $items_wrap;
 
-            $args->items_wrap = $items_wrap;
+	        //Set the Container and Menu Classes
+			$args->container = 'div';
+	        $args->container_class = "{$this->unique_menu_id}_container_class";
+	        $args->container_id = "{$this->unique_menu_id}_container";
+	        $args->menu_class = "{$this->settings->menu_type} {$this->settings->menu_alignment} {$this->settings->submenu_dropdown_direction}";
+	        $args->menu_id = "{$this->unique_menu_id}_outer_list";
+
+	        //Set the fallback function if required
             if ($this->settings->override_fallback_menu)
                 $args->fallback_cb = array($this, 'fallback');
         }
@@ -100,6 +110,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
              * comparison that is not case sensitive. The strcasecmp() function returns
              * a 0 if the strings are equal.
              */
+
             //TODO: Fix this for button/pills/tabs
             if (strcasecmp($item->attr_title, 'divider') == 0 && $depth > 0) {
                 $output .= $indent . '<li role="presentation" class="divider">';

@@ -27,8 +27,8 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
             $this->settings = $settings;
 
             //Add filters to catch pre-nav menu build (i.e. replace with walker) and post to prefix/suffix the required menu code.
-            add_filter('pre_wp_nav_menu', array($this, 'my_bootstrap_menu_pre_wp_nav_menu'), 10, 2);
-            add_filter('wp_nav_menu', array($this, 'my_bootstrap_menu_wp_nav_menu'), 10, 2);
+            add_filter('pre_wp_nav_menu', array($this, 'my_bootstrap_menu_pre_wp_nav_menu'), 999, 2);
+            add_filter('wp_nav_menu', array($this, 'my_bootstrap_menu_wp_nav_menu'),999, 2);
         }
 
         /**
@@ -78,9 +78,6 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
             //Get the nav menu markup
             $nav_menu_markup = new My_Bootstrap_Menu_Nav_Menu_Markup($this->settings);
-
-            //Change any args values
-            $nav_menu_markup->amend_arg_values($args);
 
             //Prefix the menu with the header bar etc.
             $prefix = $nav_menu_markup->get_navbar_prefix();

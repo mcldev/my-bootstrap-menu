@@ -84,7 +84,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
         public static function Submenu_Dropdown_Direction()
         {
             return array('Drop down' => '',
-                'Drop up' => 'dropup');
+                        'Drop up' => 'dropup');
         }
 
         public static function Submenu_Dropdown_Alignment()
