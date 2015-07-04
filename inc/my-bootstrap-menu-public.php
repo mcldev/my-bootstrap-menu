@@ -63,6 +63,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                 wp_register_style('bootstrap-css', MY_BOOTSTRAP_MENU_PLUGIN_URL . '/assets/bootstrap/css/bootstrap.css', array('bootstrap-responsive-css'), '3.3.4', 'all');
                 wp_enqueue_style('bootstrap-css');
 
+                wp_enqueue_script('jquery');
                 wp_register_script('bootstrap-js', MY_BOOTSTRAP_MENU_PLUGIN_URL . '/assets/bootstrap/js/bootstrap.min.js', array('jquery'), '3.3.4', true);
                 wp_enqueue_script('bootstrap-js');
             }

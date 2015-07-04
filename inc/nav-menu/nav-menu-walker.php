@@ -46,10 +46,10 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
 	        //Set the Container and Menu Classes
 			$args->container = 'div';
-	        $args->container_class = "{$this->unique_menu_id}_container_class";
-	        $args->container_id = "{$this->unique_menu_id}_container";
-	        $args->menu_class = "{$this->settings->menu_type} {$this->settings->menu_alignment} {$this->settings->submenu_dropdown_direction}";
-	        $args->menu_id = "{$this->unique_menu_id}_outer_list";
+            $args->container_class = "{$this->unique_menu_id}_container_class";
+            $args->container_id = "{$this->unique_menu_id}_container";
+            $args->menu_class = "{$this->settings->menu_type} {$this->settings->menu_alignment} {$this->settings->submenu_dropdown_direction}";
+            $args->menu_id = "{$this->unique_menu_id}_outer_list";
 
 	        //Set the fallback function if required
             if ($this->settings->override_fallback_menu)
@@ -175,9 +175,9 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                     $inner_class .= in_array('current-menu-item', $outer_class_array) ? ' active' : '';
                     $inner_class .= " btn {$this->settings->button_type}";
                 }
-
+//	            !empty($item->url) ? $item->url :
                 if ($args->has_children && 0 === $depth) {
-                    $inner_atts_array['href'] = !empty($item->url) ? $item->url : '#';
+                    $inner_atts_array['href'] = ! empty( $item->url ) ? $item->url : '#';
                     $inner_atts_array['data-toggle'] = 'dropdown';
                     $inner_class .= ' dropdown-toggle';
                    $inner_atts_array['aria-haspopup'] = 'true';
@@ -186,9 +186,9 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                     /*Review here*/
                     $inner_atts_array['tabindex'] = "-1";
                 } else {
-	                $inner_atts_array['href'] = !empty($item->url) ? $item->url : '#';
-	                /*Review here*/
-	                $inner_atts_array['tabindex'] = "-1";
+                    $inner_atts_array['href'] = !empty($item->url) ? $item->url : '#';
+                    /*Review here*/
+                    $inner_atts_array['tabindex'] = "-1";
                 }
                 $inner_atts_array['class'] = $inner_class;
 
