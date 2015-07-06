@@ -30,16 +30,16 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
     Define project paths and constants
     *******************************************
     */
-    if (!defined('MY_BOOTSTRAP_MENU_PLUGIN_PATH'))
-        define('MY_BOOTSTRAP_MENU_PLUGIN_PATH', dirname(__FILE__));
-    if (!defined('MY_BOOTSTRAP_MENU_PLUGIN_URL'))
-        define('MY_BOOTSTRAP_MENU_PLUGIN_URL', plugins_url('', __FILE__));
-    if (!defined('MY_BOOTSTRAP_MENU_PLUGIN_BASENAME'))
-        define('MY_BOOTSTRAP_MENU_PLUGIN_BASENAME', plugin_basename(__FILE__));
-    if (!defined('MY_BOOTSTRAP_MENU_PLUGIN_INC'))
-        define('MY_BOOTSTRAP_MENU_PLUGIN_INC', MY_BOOTSTRAP_MENU_PLUGIN_PATH . '/inc');
-    if (!defined('MY_BOOTSTRAP_MENU_PLUGIN_ASSETS'))
-        define('MY_BOOTSTRAP_MENU_PLUGIN_ASSETS', MY_BOOTSTRAP_MENU_PLUGIN_PATH . '/assets');
+    if (!defined(__NAMESPACE__ . '\MY_BOOTSTRAP_MENU_PLUGIN_PATH'))
+        define(__NAMESPACE__ . '\MY_BOOTSTRAP_MENU_PLUGIN_PATH', dirname(__FILE__));
+    if (!defined(__NAMESPACE__ . '\MY_BOOTSTRAP_MENU_PLUGIN_URL'))
+        define(__NAMESPACE__ . '\MY_BOOTSTRAP_MENU_PLUGIN_URL', plugins_url('', __FILE__));
+    if (!defined(__NAMESPACE__ . '\MY_BOOTSTRAP_MENU_PLUGIN_BASENAME'))
+        define(__NAMESPACE__ . '\MY_BOOTSTRAP_MENU_PLUGIN_BASENAME', plugin_basename(__FILE__));
+    if (!defined(__NAMESPACE__ . '\MY_BOOTSTRAP_MENU_PLUGIN_INC'))
+        define(__NAMESPACE__ . '\MY_BOOTSTRAP_MENU_PLUGIN_INC', MY_BOOTSTRAP_MENU_PLUGIN_PATH . '/inc');
+    if (!defined(__NAMESPACE__ . '\MY_BOOTSTRAP_MENU_PLUGIN_ASSETS'))
+        define(__NAMESPACE__ . '\MY_BOOTSTRAP_MENU_PLUGIN_ASSETS', MY_BOOTSTRAP_MENU_PLUGIN_PATH . '/assets');
 
 
     /**
