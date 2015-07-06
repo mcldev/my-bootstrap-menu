@@ -80,9 +80,9 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                 return false;
 
             $styles_to_check = array('load_bootstrap_styles' => true,
-                'load_bootstrap_submenu_styles' => true,
-                'load_bootstrap_custom_styles' => true,
-                'load_bootstrap_custom_scripts' => true);
+                                    'load_bootstrap_submenu_styles' => true,
+                                    'load_bootstrap_custom_styles' => true,
+                                    'load_bootstrap_custom_scripts' => true);
             $styles_to_load = array();
 
             //Load each setting... and check if bootstrap or custom css is required

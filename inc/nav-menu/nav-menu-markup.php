@@ -264,11 +264,15 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                                     <input type='submit'
                                            id='{$this->unique_menu_id}_search'
                                            value='search'
-                                           class='btn form-control hidden' />
-                                    <label for='{$this->unique_menu_id}_search'
-                                            class='btn {$this->settings->search_button_type}'>
-                                            <i class='{$this->settings->search_glyphicon}'></i>{$this->settings->search_label}</label>
-                                </div>
+                                           class='btn form-control hidden' />";
+            //Add search button if either glyhpicon is selected or label is not blank
+            if($this->settings->search_glyphicon != '' || $this->settings->search_label != '' ) {
+                $html .= "        <label for='{$this->unique_menu_id}_search'
+                                        class='btn {$this->settings->search_button_type}'>
+                                        <i class='{$this->settings->search_glyphicon}'></i>{$this->settings->search_label}</label>";
+            }
+
+            $html .= "            </div>
                             </form>
                         </li>
                     </ul>";

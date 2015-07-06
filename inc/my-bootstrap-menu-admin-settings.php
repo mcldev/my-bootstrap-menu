@@ -98,7 +98,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                 //Menu/Theme Selection
                 //section_menu with Unique_Settings_Id
                 My_Plugin_Settings_Node::withValues('menu_theme', 'Select Menu or Theme Location', null, $this::section_menu, My_Plugin_Settings_Input_Type::Unique_Settings_Id, 'Menu Name has priority over Theme Location', $menus_and_theme_location_options),
-                My_Plugin_Settings_Node::withValues('bootstrap_this_menu', 'Bootstrap this menu: ', false, $this::section_menu, My_Plugin_Settings_Input_Type::Checkbox, 'Set this menu or theme location to be a bootstrap menu'),
+                                My_Plugin_Settings_Node::withValues('bootstrap_this_menu', 'Bootstrap this menu: ', false, $this::section_menu, My_Plugin_Settings_Input_Type::Checkbox, 'Set this menu or theme location to be a bootstrap menu'),
 
                 //section_navbar_format
                 My_Plugin_Settings_Node::withValues('menu_type', 'Select Menu Type', null, $this::section_navbar_format, My_Plugin_Settings_Input_Type::Select_Option, 'Select the menu type', My_Bootstrap_Menu_Nav_Menu_Consts::Menu_Type()),
