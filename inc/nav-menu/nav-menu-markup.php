@@ -244,7 +244,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
         private function get_search_field()
         {
             $html = '';
-            if ($this->settings->display_search)
+            if ($this->settings->display_search) {
                 $html .= "<ul class='nav navbar-nav {$this->settings->search_alignment}'>
                         <li>
                             <form method='get'
@@ -265,18 +265,18 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                                            id='{$this->unique_menu_id}_search'
                                            value='search'
                                            class='btn form-control hidden' />";
-            //Add search button if either glyhpicon is selected or label is not blank
-            if($this->settings->search_glyphicon != '' || $this->settings->search_label != '' ) {
-                $html .= "        <label for='{$this->unique_menu_id}_search'
+                //Add search button if either glyhpicon is selected or label is not blank
+                if ($this->settings->search_glyphicon != '' || $this->settings->search_label != '') {
+                    $html .= "        <label for='{$this->unique_menu_id}_search'
                                         class='btn {$this->settings->search_button_type}'>
                                         <i class='{$this->settings->search_glyphicon}'></i>{$this->settings->search_label}</label>";
-            }
+                }
 
-            $html .= "            </div>
+                $html .= "            </div>
                             </form>
                         </li>
                     </ul>";
-
+            }
             return $html;
         }
 
