@@ -56,13 +56,13 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
         public static function list_menus_and_theme_locations()
         {
             //List all menus
-            $menus_and_themes = My_Bootstrap_Menu_Funcs::list_all_menu_names();
+            $menus_and_themes = self::list_all_menu_names();
             if (!$menus_and_themes)
                 return $menus_and_themes;
 
 
             //List all themes
-            $themes = My_Bootstrap_Menu_Funcs::list_all_theme_location_names();
+            $themes = self::list_all_theme_location_names();
             if ($themes != false)
                 $menus_and_themes = array_merge($menus_and_themes, $themes);
 
