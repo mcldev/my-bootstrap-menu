@@ -24,15 +24,15 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
          * @param $message
          * @param string $type
          */
-        public function add_admin_notice($message, $type = My_Plugin_Notice_Type::Error)
+        public function add_admin_notice($code, $msg, $type = My_Plugin_Notice_Type::Error )
         {
             $msg = $type . ': ';
-            if (is_array($message) || is_object($message)) {
-                $msg .= print_r($message, true) . "<br>\n";
+            if (is_array($msg) || is_object($msg)) {
+                $msg .= print_r($msg, true) . "<br>\n";
             } else {
-                $msg .= $message . "<br>\n";
+                $msg .= $msg . "<br>\n";
             }
-            echo '<h5 class="my_plugin_public-admin-notice">' . $msg . "</h5>";
+            echo "<h5 id='setting-error-{$code}' class='my_plugin_public-admin-notice error notice'>" . $msg . "</h5>";
         }
 
         /**

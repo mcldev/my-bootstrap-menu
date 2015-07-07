@@ -87,19 +87,12 @@ Yes, this plugin works fine with WordPress 4.2.2
 
 == Screenshots ==
 1. The main settings page, showing the list of menus and the main tabs
-2. Menu format settings: type, format and fixed type
-3. Display options: enable or disable any menu components
-4. Select a logo to display on your menu
-5. Format the title text
-6. Glyphicon Selector
-7. Search box settings
-8. Login icon and label
-9. Register icon
-10. Align all menu elements individually
-11. Advanced button menu settings
-12. Submenu formatting and menu drop-down
-13. Advanced class options
-14. Advanced Selection whether to load custom and included Bootstrap styles
+2. A standard Bootstrap Nav Menu, with logo and multi-tiered sub-menus
+3. Inverse Pills menu
+4. Button Menu aligned right, and different glyphicons for search and logout
+5. Mobile enabled responsive menu, features vertical button stacking.
+6. Glyphicon Selection for Search, Login, Logout, and Register buttons
+7. Select a logo to display on your menu
 
 == Changelog ==
 = 1.0 =

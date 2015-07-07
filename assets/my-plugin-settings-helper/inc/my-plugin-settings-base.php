@@ -40,8 +40,19 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
          * Current and Minimum required plugin versions to work with the saved settings
          * @var
          */
-        protected $current_plugin_version;
         protected $min_plugin_version;
+
+        /**
+         * Current and Minimum required plugin versions to work with the saved settings
+         * @var
+         */
+        private $current_plugin_version;
+
+        /**
+         * Stores the parent plugin basefile name, for registration/activation hooks
+         * @var
+         */
+        protected $plugin_basefile;
 
         /**
          * Flag to set when resetting values to default values, stops loading of values on build.
@@ -70,7 +81,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
          * @param string $type
          * @return mixed
          */
-        abstract public function add_admin_notice($message, $type = My_Plugin_Notice_Type::Error);
+        abstract public function add_admin_notice($code, $msg, $type = My_Plugin_Notice_Type::Error );
 
         /**
          * Get the values from each Settings node as key=>value
@@ -93,8 +104,8 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
             $this->option_settings_db_name = $settings_args['option_settings_db_name'];
 
             //Min and Current Version
-            if (array_key_exists('current_plugin_version', $settings_args))
-                $this->current_plugin_version = $settings_args['current_plugin_version'];
+            if (array_key_exists('plugin_basefile', $settings_args))
+                $this->plugin_basefile = $settings_args['plugin_basefile'];
 
             if (array_key_exists('min_required_version', $settings_args))
                 $this->min_plugin_version = $settings_args['min_required_version'];
@@ -105,7 +116,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
             // Load the current settings from the db... if any
             if (!$this->use_default_values)
-                $this->load_options();
+                $this->load_options(null, is_admin());
         }
 
         /**
@@ -126,6 +137,23 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
         public function get_unique_id()
         {
             return $this->unique_id;
+        }
+
+        /**
+         * Gets the current plugin's version from the basefilename - if provided
+         * @return null|string
+         */
+        public function get_plugin_version()
+        {
+            if (!isset($this->current_plugin_version)) {
+                if (isset($this->plugin_basefile) and function_exists('get_plugin_data')) {
+                    $plugin_data = get_plugin_data($this->plugin_basefile);
+                    $this->current_plugin_version = '' . $plugin_data['Version'];
+                } else {
+                    return null;
+                }
+            }
+            return $this->current_plugin_version;
         }
 
         /**
@@ -179,19 +207,26 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
             //If no options available from WP db then return false
             if (!$options) {
                 if ($display_error) {
-                    $this->add_admin_notice('No saved options available', My_Plugin_Notice_Type::Error);
+                    $this->add_admin_notice('load_settings',
+                                            'No saved options available',
+                                            My_Plugin_Notice_Type::Update);
                 }
                 return false;
             }
 
             //Check if min version is ok for these settings
             if (array_key_exists('plugin_version', $options) && isset($this->min_plugin_version)) {
-                $saved_plugin_version = $options['plugin_version'];
-                if ($saved_plugin_version < $this->min_plugin_version) {
-                    $this->add_admin_notice('Saved version of settings out of date', My_Plugin_Notice_Type::Error);
+                $current_plugin_version = $this->get_plugin_version();
+                if (version_compare($current_plugin_version, $this->min_plugin_version, '<')) {
+                    if ($display_error) {
+                        $this->add_admin_notice('load_settings',
+                                                "Saved version of settings out of date [current version: {$current_plugin_version} min required: {$this->min_plugin_version}]",
+                                                My_Plugin_Notice_Type::Error);
+                    }
                     return false;
                 }
             }
+
 
             // Load each option into an existing or new Key=>Value pair
             foreach ($options as $key => $value) {

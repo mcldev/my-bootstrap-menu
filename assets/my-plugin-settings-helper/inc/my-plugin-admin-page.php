@@ -96,10 +96,13 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
                     <!-- Summary text -->
                     <p class="my_plugin_summary_text"><?php echo $this->summary_text; ?></p>
+
                 </div>
 
-                <!-- Errors section (if any set during load) -->
-                <?php settings_errors($this->option_group_page_name); ?>
+                <!-- Errors section (if any set during load) echo $this->-->
+                <div class="my_plugin_errors">
+                    <?php settings_errors($this->option_group_page_name); ?>
+                </div>
 
                 <!-- Tab headers - if any are set -->
                 <?php echo $this->get_tab_header(); ?>

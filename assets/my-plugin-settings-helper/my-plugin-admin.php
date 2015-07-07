@@ -60,12 +60,6 @@ namespace My_Bootstrap_Menu_Plugin_Namespace
         private $plugin_basename;
 
         /**
-         * Stores the parent plugin basefile name, for registration/activation hooks
-         * @var
-         */
-        private $plugin_basefile;
-
-        /**
          * Private object to build the Admin Settings Page
          * @var
          */
@@ -261,23 +255,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace
                 //Add Sub Menu
                 $this->page_id = add_submenu_page($this->parent_slug, $this->page_title, $this->menu_title, $this->user_capability, $this->option_group_page_name, array($this->admin_page, 'build_settings_page'));
             }
-            //Create the Admin Notices to handle publishing notices on errors etc. NB: Page Id is set from 'add_options_page'
-            $this->admin_notice_display = new My_Plugin_Admin_Notice($this->page_id);
-            $this->display_enqueued_admin_notices();
-        }
 
-
-        /**
-         * Displays the enqueued admin notices, created either here or during the admin settings load
-         */
-        private function display_enqueued_admin_notices()
-        {
-            //Show the admin notices if there are any...
-            if (isset($this->settings->admin_notices)) {
-                foreach ($this->settings->admin_notices as $type => $message) {
-                    $this->admin_notice_display->add_admin_notice($message, $type);
-                }
-            }
         }
 
         /**

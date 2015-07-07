@@ -69,23 +69,6 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
             return $menus_and_themes;
         }
 
-        /**
-         * Returns the plugin version from the main plugin file
-         * @return bool|string
-         */
-        public static function  get_plugin_version()
-        {
-            static $plugin_data;
-            if (!$plugin_data) {
-                if (defined(__NAMESPACE__ . '/MY_BOOTSTRAP_MENU_PLUGIN_BASENAME') and function_exists('get_plugin_data')) {
-                    $plugin_data = get_plugin_data(MY_BOOTSTRAP_MENU_PLUGIN_BASENAME);
-                } else {
-                    return false;
-                }
-            }
-            return '' . $plugin_data['Version'];
-        }
-
         public static function get_menu_name_at_location($theme_location)
         {
             $menu_at_location = self::get_menu_at_location($theme_location);

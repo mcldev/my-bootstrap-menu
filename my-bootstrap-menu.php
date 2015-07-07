@@ -111,7 +111,6 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
         require_once(MY_BOOTSTRAP_MENU_PLUGIN_INC . '/nav-menu/nav-menu-walker.php');
     };
 
-
     /*
     Start the plugin here... hook to run on init
     *******************************************
@@ -128,8 +127,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                                             'plugin_basefile' => __FILE__,
                                             'option_group_page_name' => OPTION_GROUP_PAGE_NAME,
                                             'option_settings_db_name' => OPTION_SETTINGS_DB_NAME,
-                                            'min_required_version' => 0,
-                                            'current_plugin_version' => My_Bootstrap_Menu_Funcs::get_plugin_version(),
+                                            'min_required_version' => '1.0',
                                         ));
 
     }

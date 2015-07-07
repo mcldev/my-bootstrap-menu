@@ -36,7 +36,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
          * Admin Notice object to manage admin notices on load or errors for settings page
          * @var
          */
-        public $admin_notices = array();
+        public $admin_notice;
 
         /**
          * Used to track whether the settings have a unique id field
@@ -380,12 +380,14 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
          * @param $message
          * @param string $type
          */
-        public function add_admin_notice($message, $type = My_Plugin_Notice_Type::Error)
+        public function add_admin_notice($code, $msg, $type = My_Plugin_Notice_Type::Error )
         {
-            //Only one admin notice can be displayed at a time... starting with the first
-            if (!array_key_exists($type, $this->admin_notices)) {
-                $this->admin_notices[$type] = $message;
+            if(!isset($this->admin_notice)) {
+                $this->admin_notice = new My_Plugin_Admin_Notice($this->option_group_page_name);
             }
+
+            //Add settings error
+            $this->admin_notice->add_settings_error($code, $msg, $type);
         }
 
         /**
