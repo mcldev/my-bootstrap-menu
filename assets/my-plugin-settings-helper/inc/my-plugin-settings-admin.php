@@ -83,6 +83,9 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
          */
         public function __construct($settings_args)
         {
+            //Set the option group page name for the possible errors.
+            $this->option_group_page_name = $settings_args['option_group_page_name'];
+
             //Initialise values and settings/section nodes
             $this->build_sections_and_settings();
 
@@ -199,6 +202,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
                 }
             }
             //Set the value field on change... this will either be the URL requested value or default.. typically.
+            $this->unique_id = strtolower(str_replace(' ', '_', $this->unique_id));
             $this->settings_nodes[$this->_unique_id_node_key]->value = $this->unique_id;
         }
 
@@ -353,7 +357,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
                 switch ($this->get_settings_node($key)->input_type) {
                     case My_Plugin_Settings_Input_Type::Checkbox:
                         //NB: forms do not return a value for unchecked options, however false is a value...!!
-                        $validated_input[$key] = (array_key_exists($key, $input)) ? $input[$key] : false;
+                        $validated_input[$key] = array_key_exists($key, $input) ? $input[$key] : false;
                         break;
 
                     case My_Plugin_Settings_Input_Type::URL:
@@ -385,7 +389,6 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
             if(!isset($this->admin_notice)) {
                 $this->admin_notice = new My_Plugin_Admin_Notice($this->option_group_page_name);
             }
-
             //Add settings error
             $this->admin_notice->add_settings_error($code, $msg, $type);
         }
