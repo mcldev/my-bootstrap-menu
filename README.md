@@ -1,11 +1,14 @@
 # My Bootstrap Menu
-Contributors: Michael Carder
-Donate link: http://www.michaelcarder.com
+Contributors: codetoolbox, Michael Carder
+Author URI: http://www.michaelcarder.com
+Plugin URI: http://www.codetoolbox.net/wordpress/wordpress-plugins/my-bootstrap-menu/
 Tags: bootstrap, navbar, nav-menu, menu, submenu, drop-down submenu, responsive, mobile, menu walker, button, tabs, pills, alignment, inverse, logo, title, login, register, image select, my plugin settings
 Requires at least: 4.0
 Tested up to: 4.2.2
 Stable tag: 1.0
 Header tagline: Customizable plugin that applies the Bootstrap formatting classes to any Wordpress Navigation Menu
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 ## Description 
 My Boostrap Menu is a fully customizable plugin that applies the Bootstrap formatting classes to any Wordpress Navigation Menu. [Bootstrap](http://getbootstrap.com/components/#navbar) provides responsive menus for phones, tablets and desktops.
