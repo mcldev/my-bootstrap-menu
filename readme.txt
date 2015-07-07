@@ -107,6 +107,6 @@ Minor fixes for unique menu id, to remove non alpha-numeric characters.
 N/A
 
 == About us ==
-This plugin has been developed by Michael Carder Ltd. It is is built on the ['My Plugin Settings'](http://www.codetoolbox.net/wordpress/wordpress-plugins/my-plugin-settings/) framework which creates simple and intuitive user interfaces for input forms; including media dialogues and the popup selection of [Bootstrap Glyphicons](http://glyphicons.com/).
+This plugin has been developed by [Michael Carder Ltd](http://www.michaelcarder.com/). It is is built on the ['My Plugin Settings'](http://www.codetoolbox.net/wordpress/wordpress-plugins/my-plugin-settings/) framework which creates simple and intuitive user interfaces for input forms; including media dialogues and the popup selection of [Bootstrap Glyphicons](http://glyphicons.com/).
 
 Contact us for more information.
