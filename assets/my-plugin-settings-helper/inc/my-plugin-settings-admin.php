@@ -115,7 +115,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
                 $this->add_admin_notice('No Section Nodes have been set in the function: build_settings_nodes', My_Plugin_Notice_Type::Error);
 
             //Set the unique id if there is one
-            $this->set_unique_id();
+            $this->update_unique_id();
 
             //Register Fields, Sections and Settings
             add_action('admin_init', array($this, 'register_sections_and_settings'));
@@ -165,7 +165,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
         /**
          * Sets the unique id field, to be used when saving/loading from the settings db id.
          */
-        public function set_unique_id()
+        public function update_unique_id()
         {
             //If it does not have a unique id - then exit
             if (!$this->has_unique_id())
@@ -175,35 +175,35 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
             if (isset($_GET['unique_id'])) {
 
                 //If url parameter is requested... then use that...
-                $this->unique_id = $_GET['unique_id'];
+                $this->set_unique_id($_GET['unique_id']);
 
             } elseif (isset($_POST['unique_id'])) {
 
                 //Used during the form post (i.e. saving settings)
-                $this->unique_id = $_POST['unique_id'];
+                $this->set_unique_id($_POST['unique_id']);
 
             } else {
 
                 //Sets the unique settings node value (determined in the has_unique_id function)
                 if (isset($this->settings_nodes[$this->_unique_id_node_key]->value)) {
                     //Use value if given
-                    $this->unique_id = $this->settings_nodes[$this->_unique_id_node_key]->value;
+                    $this->set_unique_id($this->settings_nodes[$this->_unique_id_node_key]->value);
 
                 } elseif (isset($this->settings_nodes[$this->_unique_id_node_key]->default_value)) {
                     //Use default value
-                    $this->unique_id = $this->settings_nodes[$this->_unique_id_node_key]->default_value;
+                    $this->set_unique_id($this->settings_nodes[$this->_unique_id_node_key]->default_value);
 
                 } elseif (isset($this->settings_nodes[$this->_unique_id_node_key]->select_options)) {
                     //Get the first option in the select list
-                    $this->unique_id = reset($this->settings_nodes[$this->_unique_id_node_key]->select_options);
+                    $this->set_unique_id(reset($this->settings_nodes[$this->_unique_id_node_key]->select_options));
+
                 } else {
                     //Error message if no default value set
                     $this->add_admin_notice("There are no unique settings options provided, default value must be specified at load.", My_Plugin_Notice_Type::Error);
                 }
             }
             //Set the value field on change... this will either be the URL requested value or default.. typically.
-            $this->unique_id = strtolower(str_replace(' ', '_', $this->unique_id));
-            $this->settings_nodes[$this->_unique_id_node_key]->value = $this->unique_id;
+            $this->settings_nodes[$this->_unique_id_node_key]->value = $this->get_unique_id();
         }
 
         /**

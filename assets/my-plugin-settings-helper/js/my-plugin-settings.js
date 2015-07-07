@@ -44,6 +44,7 @@ jQuery(document).ready(function($) {
         }).change(function(event) {
             //Set the url parameter for the unique id and reload the page
             var unique_id = $(this).val();
+            unique_id = unique_id.replace(/[^a-zA-Z0-9]+/g, '_').toLowerCase();
             //Set the value back as either - page gets reloaded and the unique is set, or user stays and the value is the original.
             $(this).val(previous_uniqueid);
             //Change the url and reload the page if user selects ok...

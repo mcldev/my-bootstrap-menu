@@ -34,7 +34,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
          * Provides a unique id for saving and loading settings: [$option_settings_db_name]_[$unique_id]
          * @var
          */
-        protected $unique_id;
+        private $unique_id;
 
         /**
          * Current and Minimum required plugin versions to work with the saved settings
@@ -112,7 +112,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
             //Set the unique id if provided
             if (array_key_exists('unique_id', $settings_args))
-                $this->unique_id = $settings_args['unique_id'];
+                $this->set_unique_id($settings_args['unique_id']);
 
             // Load the current settings from the db... if any
             if (!$this->use_default_values)
@@ -139,6 +139,18 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
             return $this->unique_id;
         }
 
+        public function set_unique_id($unique_id = null)
+        {
+            if(isset($unique_id)) {
+                $this->unique_id = $this::format_unique_id($unique_id);
+            }
+        }
+
+        private static function format_unique_id($unique_id)
+        {
+            return strtolower(preg_replace("/[^A-Za-z0-9]/", '_', $unique_id));
+        }
+
         /**
          * Gets the current plugin's version from the basefilename - if provided
          * @return null|string
@@ -163,11 +175,13 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
          */
         public function get_option_settings_db_name($override_unique_id = null)
         {
-            if (isset($override_unique_id))
+            if (isset($override_unique_id)) {
+                $override_unique_id = $this::format_unique_id($override_unique_id);
                 return $this::format_option_settings_db_name($this->option_settings_db_name, $override_unique_id);
+            }
 
             if (isset($this->unique_id))
-                return $this::format_option_settings_db_name($this->option_settings_db_name, $this->unique_id);
+                return $this::format_option_settings_db_name($this->option_settings_db_name, $this->get_unique_id());
 
             return $this::format_option_settings_db_name($this->option_settings_db_name);
         }
@@ -186,20 +200,16 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
             return $db_name;
         }
 
+
+
         /**
          * Loads options from the WP database if exist
          * @return bool
          */
         function load_options($unique_id = null, $display_error = false)
         {
-            static $current_unique_id;
-
-            if (isset($unique_id) && $current_unique_id != $unique_id) {
-                //Set the unique id
-                $this->unique_id = $unique_id;
-                //Set static value to stop reloading
-                $current_unique_id = $unique_id;
-            }
+            //Set the unique id
+            $this->set_unique_id($unique_id);
 
             // Get the options from WP database
             $options = get_option($this->get_option_settings_db_name(), false);
