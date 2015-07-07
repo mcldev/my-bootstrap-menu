@@ -100,6 +100,8 @@ Yes, this plugin works fine with WordPress 4.2.2
 == Changelog ==
 = 1.0 =
  First release!
+= 1.0.1 =
+Minor fixes for unique menu id, to remove non alpha-numeric characters.
 
  == Upgrade Notice ==
 N/A

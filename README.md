@@ -106,6 +106,8 @@ Yes, this plugin works fine with WordPress 4.2.2
 ## Changelog 
 ### 1.0 
  First release!
+###  1.0.1 
+Minor fixes for unique menu id, to remove non alpha-numeric characters.
 
 ## About us 
 This plugin has been developed by Michael Carder Ltd. It is is built on the ['My Plugin Settings'](http://www.codetoolbox.net/wordpress/wordpress-plugins/my-plugin-settings/) framework which creates simple and intuitive user interfaces for input forms; including media dialogues and the popup selection of [Bootstrap Glyphicons](http://glyphicons.com/).
