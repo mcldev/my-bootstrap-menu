@@ -148,7 +148,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
         private static function format_unique_id($unique_id)
         {
-            return strtolower(preg_replace("/[^A-Za-z0-9]/", '_', $unique_id));
+            return strtolower(preg_replace("/[^a-zA-Z0-9]+/", '_', html_entity_decode($unique_id)));
         }
 
         /**
