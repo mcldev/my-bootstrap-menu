@@ -133,6 +133,11 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
                 $outer_class = join(' ', apply_filters('nav_menu_css_class', array_filter($outer_class_array), $item, $args));
 
+                //Set the main dropdown menu items to be 'dropdown' to open menu on  mouse over
+                if ($args->has_children && $depth == 0 && true == $this->settings->submenu_headings_are_links)
+                    $outer_class .= ' dropdown';
+
+                //For submenus
                 if ($args->has_children && $depth > 0)
                     $outer_class .= ' dropdown-submenu';
 
@@ -175,10 +180,10 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                     $inner_class .= in_array('current-menu-item', $outer_class_array) ? ' active' : '';
                     $inner_class .= " btn {$this->settings->button_type}";
                 }
-//	            !empty($item->url) ? $item->url :
                 if ($args->has_children && 0 === $depth) {
                     $inner_atts_array['href'] = ! empty( $item->url ) ? $item->url : '#';
-                    $inner_atts_array['data-toggle'] = 'dropdown';
+                    if(!(true == $this->settings->submenu_headings_are_links))
+                        $inner_atts_array['data-toggle'] = 'dropdown';
                     $inner_class .= ' dropdown-toggle';
                    $inner_atts_array['aria-haspopup'] = 'true';
                 } elseif($args->has_children) {

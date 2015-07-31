@@ -5,7 +5,7 @@ Plugin URI: http://www.codetoolbox.net/wordpress/wordpress-plugins/my-bootstrap-
 Tags: bootstrap, navbar, nav-menu, menu, submenu, drop-down submenu, responsive, mobile, menu walker, button, tabs, pills, alignment, inverse, logo, title, login, register, image select, my plugin settings
 Requires at least: 4.0
 Tested up to: 4.2.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Header tagline: Customizable plugin that applies the Bootstrap formatting classes to any Wordpress Navigation Menu
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -98,13 +98,23 @@ Yes, this plugin works fine with WordPress 4.2.2
 7. Select a logo to display on your menu
 
 == Changelog ==
-= 1.0 =
- First release!
+
+= 1.0.2 =
+Enhanced functionality for setting Main Menu Items as links when they have child/submenu items.
+This will change the behaviour when selecting 'Submenu headings are links' so that submenus appear on mouse-over and menu items open on click.
+(Thanks to David Woodward for highlighting this)
+
 = 1.0.1 =
 Minor fixes for unique menu id, to remove non alpha-numeric characters.
 
- == Upgrade Notice ==
-N/A
+= 1.0 =
+ First release!
+
+== Upgrade Notice ==
+
+= 1.0.2 =
+Enhanced functionality for setting Main Menu Items as links when they have child/submenu items.
+This will change the behaviour when selecting 'Submenu headings are links' so that submenus appear on mouse-over and menu items open on click.
 
 == About us ==
 This plugin has been developed by [Michael Carder Ltd](http://www.michaelcarder.com/). It is is built on the ['My Plugin Settings'](http://www.codetoolbox.net/wordpress/wordpress-plugins/my-plugin-settings/) framework which creates simple and intuitive user interfaces for input forms; including media dialogues and the popup selection of [Bootstrap Glyphicons](http://glyphicons.com/).
