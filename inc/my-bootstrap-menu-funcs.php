@@ -105,12 +105,20 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
             //Get the Menu name and Theme location
             if (isset($args->menu) && $args->menu != '') {
-                $menu_theme['menu'] = $args->menu; //menu name is set
+                //For WP 4.3 -> returns the menu as a menu object!!
+                if(is_object($args->menu)){
+                    $menu = $args->menu->name;
+                } else {
+                    $menu = $args->menu;
+                }
+                //Return both Menu Name and Theme Location
+                $menu_theme['menu'] = $menu; //menu name is set
                 if (isset($args->theme_location)) {
                     $menu_theme['theme'] = $args->theme_location; //both values are set
                 } else {
                     $menu_theme['theme'] = self::get_theme_with_menu($menu_theme['menu']); //only menu name is set, so get theme (if available!)
                 }
+
             } elseif (isset($args->theme_location) && $args->theme_location != '') {
                 $menu_theme['menu'] = self::get_menu_name_at_location($args->theme_location); //only theme is set so get the name at that theme location
                 $menu_theme['theme'] = $args->theme_location; //Theme is set
