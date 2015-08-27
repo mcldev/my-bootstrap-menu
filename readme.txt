@@ -4,8 +4,8 @@ Author URI: http://www.michaelcarder.com
 Plugin URI: http://www.codetoolbox.net/wordpress/wordpress-plugins/my-bootstrap-menu/
 Tags: bootstrap, navbar, nav-menu, menu, submenu, drop-down submenu, responsive, mobile, menu walker, button, tabs, pills, alignment, inverse, logo, title, login, register, image select, my plugin settings
 Requires at least: 4.0
-Tested up to: 4.2.2
-Stable tag: 1.0.2
+Tested up to: 4.3.0
+Stable tag: 1.0.3
 Header tagline: Customizable plugin that applies the Bootstrap formatting classes to any Wordpress Navigation Menu
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -112,6 +112,9 @@ Minor fixes for unique menu id, to remove non alpha-numeric characters.
 
 == Upgrade Notice ==
 
+= 1.0.3 =
+Fixes for Wordpress 4.3.0 compatibility. Menu names being returned as menu objects in the latest WP release.
+
 = 1.0.2 =
 Enhanced functionality for setting Main Menu Items as links when they have child/submenu items.
 This will change the behaviour when selecting 'Submenu headings are links' so that submenus appear on mouse-over and menu items open on click.
@@ -119,4 +122,4 @@ This will change the behaviour when selecting 'Submenu headings are links' so th
 == About us ==
 This plugin has been developed by [Michael Carder Ltd](http://www.michaelcarder.com/). It is is built on the ['My Plugin Settings'](http://www.codetoolbox.net/wordpress/wordpress-plugins/my-plugin-settings/) framework which creates simple and intuitive user interfaces for input forms; including media dialogues and the popup selection of [Bootstrap Glyphicons](http://glyphicons.com/).
 
-Contact us for more information.
+['Contact us'](http://www.michaelcarder.co.uk/contact-us) for more information.
