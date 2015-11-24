@@ -279,7 +279,9 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
         {
             $html = '';
             if ($this->settings->display_caret)
-                $html .= "<span class='{$this->settings->submenu_caret_icon}'></span>";
+                $submenu_icon = $this->settings->submenu_caret_icon;
+                $submenu_icon = !empty($submenu_icon) ? $submenu_icon : 'dashicons dashicons-arrow-down';
+                $html .= "<span class='{$submenu_icon}'></span>";
 
             return $html;
         }
