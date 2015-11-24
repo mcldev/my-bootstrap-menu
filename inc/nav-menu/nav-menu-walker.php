@@ -266,8 +266,9 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
          */
         private function is_button_menu()
         {
-            return ($this->settings->menu_type == My_Bootstrap_Menu_Nav_Menu_Consts::Menu_Type()['Buttons'] ||
-                $this->settings->menu_type == My_Bootstrap_Menu_Nav_Menu_Consts::Menu_Type()['Button Group']);
+            $tmp_MenuType = My_Bootstrap_Menu_Nav_Menu_Consts::Menu_Type();
+            return ($this->settings->menu_type == $tmp_MenuType['Buttons'] ||
+                $this->settings->menu_type == $tmp_MenuType['Button Group']);
         }
 
         /**
@@ -278,7 +279,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
         {
             $html = '';
             if ($this->settings->display_caret)
-                $html .= "<span class='caret'></span>";
+                $html .= "<span class='{$this->settings->submenu_caret_icon}'></span>";
 
             return $html;
         }
