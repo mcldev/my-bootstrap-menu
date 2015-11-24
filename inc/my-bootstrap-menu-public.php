@@ -67,6 +67,11 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                 wp_register_script('bootstrap-js', MY_BOOTSTRAP_MENU_PLUGIN_URL . '/assets/bootstrap/js/bootstrap.min.js', array('jquery'), '3.3.4', true);
                 wp_enqueue_script('bootstrap-js');
             }
+
+            if (isset($load_styles['submenu_caret_icon'])) {
+                wp_enqueue_style( 'dashicons' );
+            }
+
         }
 
         /**
@@ -82,7 +87,8 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
             $styles_to_check = array('load_bootstrap_styles' => true,
                                     'load_bootstrap_submenu_styles' => true,
                                     'load_bootstrap_custom_styles' => true,
-                                    'load_bootstrap_custom_scripts' => true);
+                                    'load_bootstrap_custom_scripts' => true,
+                                    'submenu_caret_icon' => true);
             $styles_to_load = array();
 
             //Load each setting... and check if bootstrap or custom css is required
