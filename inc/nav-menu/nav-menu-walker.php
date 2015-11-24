@@ -123,8 +123,10 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
                 //Build the classes
                 //***********************************************
+                $wp_classes = empty($item->classes) ? array() : (array)$item->classes;
+
                 if ($this->settings->include_wp_menu_classes) {
-                    $outer_class_array = empty($item->classes) ? array() : (array)$item->classes;
+                    $outer_class_array = $wp_classes;
                 } else {
                     $outer_class_array = array();
                 }
@@ -141,7 +143,9 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                 if ($args->has_children && $depth > 0)
                     $outer_class .= ' dropdown-submenu';
 
-                if (in_array('current-menu-item', $outer_class_array))
+                if (in_array('current-menu-item', $wp_classes)
+                    || in_array('current-menu-parent', $wp_classes)
+                    || in_array('current-menu-ancestor', $wp_classes))
                     $outer_class .= ' active';
 
                 $outer_class = $outer_class ? esc_attr($outer_class) : '';
