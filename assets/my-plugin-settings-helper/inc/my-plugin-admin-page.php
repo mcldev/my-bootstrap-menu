@@ -97,10 +97,13 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
                 </div>
 
-                <!-- Errors section (if any set during load) echo $this->-->
+                <!-- Errors section (if any set during load) -->
                 <div class="my_plugin_errors">
                     <?php settings_errors($this->option_group_page_name); ?>
                 </div>
+
+                <!-- Glyphicon/Dashicon section (if any required during load) -->
+                <?php echo $this->get_icon_selectors(); ?>
 
                 <!-- Tab headers - if any are set -->
                 <?php echo $this->get_tab_header(); ?>
@@ -132,6 +135,27 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
             </div>
 
         <?php
+        }
+
+        /**
+         * Add the Dashicon or Glyphicon selectors if required by the plugin
+         * @return string
+         */
+        private function get_icon_selectors() {
+            $html = '';
+            $require_glyphicon = $this->settings->requires_input_type(My_Plugin_Settings_Input_Type::Glyphicon_Select);
+            $require_dashicon = $this->settings->requires_input_type(My_Plugin_Settings_Input_Type::Dashicon_Select);
+            if($require_glyphicon || $require_dashicon) {
+                $html .= "<div id='my_plugin_icon_selectors'>";
+                if($require_glyphicon) {
+                    $html .= My_Plugin_Icons::get_glyphicons_list();
+                }
+                if($require_dashicon) {
+                    $html .= My_Plugin_Icons::get_dashicon_list();
+                }
+                $html .= "</div>";
+            }
+            return $html;
         }
 
         /**

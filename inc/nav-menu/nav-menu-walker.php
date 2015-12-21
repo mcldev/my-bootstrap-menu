@@ -48,7 +48,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 			$args->container = 'div';
             $args->container_class = "{$this->unique_menu_id}_container_class";
             $args->container_id = "{$this->unique_menu_id}_container";
-            $args->menu_class = "{$this->settings->menu_type} {$this->settings->menu_alignment} {$this->settings->submenu_dropdown_direction}";
+            $args->menu_class = " {$this->settings->submenu_dropdown_direction}";
             $args->menu_id = "{$this->unique_menu_id}_outer_list";
 
 	        //Set the fallback function if required
@@ -94,10 +94,11 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
          * @param string $output Passed by reference. Used to append additional content.
          * @param object $item Menu item data object.
          * @param int $depth Depth of menu item. Used for padding.
-         * @param object $args An array of additional arguments.
-         * @param int $current_page ID of the current item.
+         * @param array|object $args An array of additional arguments.
+         * @param int $menu_item_id
+         * @internal param int $current_page ID of the current item.
          */
-        public function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0)
+        public function start_el(&$output, $item, $depth = 0, $args = array(), $menu_item_id = 0)
         {
 
             $indent = ($depth) ? str_repeat("\t", $depth) : '';
@@ -111,7 +112,6 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
              * a 0 if the strings are equal.
              */
 
-            //TODO: Fix this for button/pills/tabs
             if (isset($item->attr_title ) && strcasecmp($item->attr_title, 'divider') == 0 && $depth > 0) {
                 $output .= $indent . '<li role="presentation" class="divider">';
             } else if (isset($item->attr_title ) && strcasecmp($item->attr_title, 'dropdown-header') == 0 && $depth > 0) {
@@ -121,7 +121,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
             } else {
 
 
-                //Build the classes
+                //Build the outer classes i.e. for <li> elements
                 //***********************************************
                 $wp_classes = empty($item->classes) ? array() : (array)$item->classes;
 
@@ -131,30 +131,33 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                     $outer_class_array = array();
                 }
 
+                //Add menu item id to the outer class - and create class string
                 $outer_class_array[] = 'menu-item-' . $item->ID;
-
                 $outer_class = join(' ', apply_filters('nav_menu_css_class', array_filter($outer_class_array), $item, $args));
 
                 //Set the main dropdown menu items to be 'dropdown' to open menu on  mouse over
-                if ($args->has_children && $depth == 0 && true == $this->settings->submenu_headings_are_links)
+                if ($args->has_children)
                     $outer_class .= ' dropdown';
 
                 //For submenus
                 if ($args->has_children && $depth > 0)
                     $outer_class .= ' dropdown-submenu';
 
+                //Set active if current menu item(s)
                 if (in_array('current-menu-item', $wp_classes)
                     || in_array('current-menu-parent', $wp_classes)
-                    || in_array('current-menu-ancestor', $wp_classes))
+                    || in_array('current-menu-ancestor', $wp_classes)) {
                     $outer_class .= ' active';
+                }
 
                 $outer_class = $outer_class ? esc_attr($outer_class) : '';
 
 
                 //Set the menu item id
                 //***********************************************
-                $id = apply_filters('nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args);
-                $id = $id ? ' id="' . esc_attr($id) . '"' : '';
+                $menu_item_id = apply_filters('nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args);
+                $menu_item_id = $menu_item_id ? esc_attr($menu_item_id) : "";
+                $display_menu_item_id = $menu_item_id ? ' id="' . $menu_item_id . '"' : '';
 
 
                 //Main section for building the start of the menu item
@@ -163,12 +166,12 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                 //***********************************************
                 $output .= $indent;
                 if ($this->is_button_menu() && 0 === $depth) {
-                    $output .= "<div {$id} class='btn-group {$this->settings->button_group_size} {$outer_class}' role='group'>";
+                    $output .= "<div {$display_menu_item_id} class='btn-group {$this->settings->button_group_size} {$outer_class}' role='group'>";
                 } else {
-                    $output .= "<li {$id} class='{$outer_class}' >";
+                    $output .= "<li {$display_menu_item_id} class='{$outer_class}' >";
                 }
 
-                //Add attributes to the menu item
+                //Build the inner class array i.e. for the <a> elements
                 //***********************************************
                 $inner_atts_array = array();
                 $inner_atts_array['title'] = !empty($item->attr_title) ? $item->attr_title : (!empty($item->title) ? $item->title : '');
@@ -179,28 +182,37 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                 // If item has_children add attributes to a.
                 //***********************************************
                 $inner_class = '';
+                //Button Menu + top level
                 if ($this->is_button_menu() && 0 === $depth) {
                     //Add the button menu classes
-                    $inner_class .= in_array('current-menu-item', $outer_class_array) ? ' active' : '';
+                    if(in_array('current-menu-item', $wp_classes)
+                        || in_array('current-menu-parent', $wp_classes)
+                        || in_array('current-menu-ancestor', $wp_classes)) {
+                        $inner_class .= ' active';
+                    }
                     $inner_class .= " btn {$this->settings->button_type}";
                 }
-                if ($args->has_children && 0 === $depth) {
-                    $inner_atts_array['href'] = ! empty( $item->url ) ? $item->url : '#';
-                    if(!(true == $this->settings->submenu_headings_are_links))
+                //Has children
+                if ($args->has_children) {
+                    if(true == $this->settings->submenu_headings_are_links) {
+                        $inner_atts_array['href'] = (!empty($item->url)) ? $item->url : '#';
+                    } else {
+                        $inner_class .= ' dropdown-toggle';
                         $inner_atts_array['data-toggle'] = 'dropdown';
-                    $inner_class .= ' dropdown-toggle';
-                   $inner_atts_array['aria-haspopup'] = 'true';
-                } elseif($args->has_children) {
-                    $inner_atts_array['href'] = (true == $this->settings->submenu_headings_are_links && !empty($item->url)) ? $item->url : '#';
-                    /*Review here*/
-                    $inner_atts_array['tabindex'] = "-1";
-                } else {
+                        $inner_atts_array['role'] = 'button';
+                        $inner_atts_array['aria-haspopup'] = 'true';
+                        $inner_atts_array['aria-expanded'] = 'false';
+                    }
+                }
+
+                //Menu Item with no children
+                else {
                     $inner_atts_array['href'] = !empty($item->url) ? $item->url : '#';
                     /*Review here*/
                     $inner_atts_array['tabindex'] = "-1";
                 }
-                $inner_atts_array['class'] = $inner_class;
 
+                $inner_atts_array['class'] = $inner_class;
                 $inner_atts_array = apply_filters('nav_menu_link_attributes', $inner_atts_array, $item, $args);
 
 
@@ -224,7 +236,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                  * property is NOT null we apply it as the class name for the glyphicon.
                  */
                 if (!empty($item->attr_title) && strpos($item->attr_title, 'glyphicon-') !== false) {
-                    $item_output .= '<a' . $inner_atts . '><span class="glyphicon ' . esc_attr($item->attr_title) . '"></span>&nbsp;';
+                    $item_output .= '<a' . $inner_atts . '><span class="glyphicon ' . esc_attr($item->attr_title) . '"></span>';
                 } else {
                     $item_output .= '<a' . $inner_atts . '>';
                 }
@@ -235,7 +247,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
                 //Closing tags
                 //***********************************************
-                $item_output .= ($args->has_children && 0 === $depth) ? "{$this->display_caret()}</a>" : '</a>';
+                $item_output .= $args->has_children ? "{$this->display_caret($menu_item_id, $depth)} </a>" : "</a>";
                 $item_output .= $args->after;
 
                 //Return value to next filter
@@ -272,17 +284,41 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
         }
 
         /**
-         * Determine whether or not to display the caret for the drop down menu (depth = 0)
+         * Determine whether or not to display the caret for the drop down menu
+         * Displays either 1) caret or glyphicon for top level and 2) right caret for submenus.
          * @return string
          */
-        private function display_caret()
+        private function display_caret($menu_item_id, $depth)
         {
             $html = '';
-            if ($this->settings->display_caret)
-                $submenu_icon = $this->settings->submenu_caret_icon;
-                $submenu_icon = !empty($submenu_icon) ? $submenu_icon : 'caret';
-                $html .= "<span class='{$submenu_icon}'></span>";
+            $submenu_icon = '';
 
+            if ($this->settings->display_caret) {
+
+                //Get Icon/Caret to display for top level menu or right caret for submenu
+                switch($depth) {
+                    //Top level
+                    case 0:
+                        $submenu_icon = $this->settings->submenu_caret_icon;
+                        $submenu_icon = !empty($submenu_icon) ? $submenu_icon : 'caret';
+                        break;
+
+                    //Submenus
+                    default:
+                        $submenu_icon = 'caret-right';
+                }
+
+                $html .= "<span class='{$submenu_icon} dropdown-toggle'";
+                if (true == $this->settings->submenu_headings_are_links) {
+                    $menu_item_id = My_Bootstrap_Menu_Funcs::startsWith($menu_item_id, "#") ? $menu_item_id : "#" . $menu_item_id;
+                    $html .= " data-toggle='dropdown'
+                                data-target='{$menu_item_id}'
+                                role = 'button'
+                                aria-haspopup = 'true'
+                                aria-expanded = 'false'";
+                }
+                $html .= "></span>";
+            }
             return $html;
         }
 

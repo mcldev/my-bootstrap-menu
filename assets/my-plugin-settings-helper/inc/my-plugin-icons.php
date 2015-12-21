@@ -6,7 +6,8 @@
  * Time: 11:15
  */
 namespace My_Bootstrap_Menu_Plugin_Namespace {
-    abstract class My_Plugin_Dashicons
+
+    abstract class My_Plugin_Icons
     {
 
         public static function get_dashicon_list()

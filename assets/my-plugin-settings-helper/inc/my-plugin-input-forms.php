@@ -15,8 +15,9 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
         /**
          *
          * Builds the section header, for each section
-         * @param $args
+         * @param My_Plugin_Section_Node $section_node
          * @return string
+         * @internal param $args
          */
         public static function build_section(My_Plugin_Section_Node $section_node)
         {
@@ -34,10 +35,11 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
         /**
          * Builds each input form for the settings nodes (fields)
          * @param $option_settings_db_name
-         * @param $value
-         * @param $key
-         * @param $args
+         * @param My_Plugin_Settings_Node $settings_node
          * @return string
+         * @internal param $value
+         * @internal param $key
+         * @internal param $args
          */
         public static function build_input_form($option_settings_db_name,
                                                 My_Plugin_Settings_Node $settings_node)
@@ -296,7 +298,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
             $dashicon_preview_value = (isset($settings_value) && $settings_value != '') ? $settings_value : '';
 
-            $dashicon_selector = My_Plugin_Dashicons::get_dashicon_list();
+            $dashicon_selector = My_Plugin_Icons::get_dashicon_list();
 
             return "<div class='my_plugin_input'>
 
@@ -313,9 +315,6 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                             type='text'
                             value='Select WP Dashicon'
                             size='25'/>
-
-                    <!-- shows the dashicon select page TODO: Move this to Ajax load on demand -->
-                    {$dashicon_selector}
 
                     <!-- the garbage icon - click to clear the dashicon value and image (jQuery) -->
                     <div class='my_plugin_dashicon-select_clear my_plugin_clear_button dashicons dashicons-trash'
@@ -345,7 +344,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
             $glyphicon_preview_value = (isset($settings_value) && $settings_value != '') ? $settings_value : '';
 
-            $glyphicon_selector = My_Plugin_Dashicons::get_glyphicons_list();
+            $glyphicon_selector = My_Plugin_Icons::get_glyphicons_list();
 
             return "<div class='my_plugin_input'>
 
@@ -362,9 +361,6 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                             type='text'
                             value='Select Bootstrap Glyphicon'
                             size='25'/>
-
-                    <!-- shows the bootstrap glyphicon select page TODO: Move this to Ajax load on demand-->
-                    {$glyphicon_selector}
 
                     <!-- the garbage icon - click to clear the dashicon value and image (jQuery) -->
                     <div class='my_plugin_glyphicon-select_clear my_plugin_clear_button dashicons dashicons-trash'

@@ -17,6 +17,11 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
     abstract class My_Plugin_Public
     {
+        /**
+         * This class's name
+         * @var string
+         */
+        public static $NAME = __CLASS__;
 
         protected $settings;
 

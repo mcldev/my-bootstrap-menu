@@ -245,14 +245,17 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
         {
             $html = '';
             if ($this->settings->display_search) {
-                $html .= "<ul class='nav navbar-nav {$this->settings->search_alignment}'>
-                        <li>
+                $html .= "<div class='{$this->settings->search_alignment}'>
                             <form method='get'
                                   id='searchform'
                                   action='{$this->home_url}'
                                   class='navbar-form'
                                   role='search'>
-                                <div class='form-group'>
+                                <div class='input-group'>
+                                    <input type='submit'
+                                           id='{$this->unique_menu_id}_search'
+                                           value='search'
+                                           class='btn form-control hidden' />
                                     <input class='form-control'
                                            type='text'
                                            size={$this->settings->search_box_width}
@@ -260,22 +263,28 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                                            id='s'
                                            value='{$this->settings->search_default_value}'
                                            onfocus=\"if(this.value==this.defaultValue)this.value='';\"
-                                           onblur=\"if(this.value=='')this.value=this.defaultValue;\"/>
-                                    <input type='submit'
-                                           id='{$this->unique_menu_id}_search'
-                                           value='search'
-                                           class='btn form-control hidden' />";
+                                           onblur=\"if(this.value=='')this.value=this.defaultValue;\"/>";
                 //Add search button if either glyhpicon is selected or label is not blank
-                if ($this->settings->search_glyphicon != '' || $this->settings->search_label != '') {
-                    $html .= "        <label for='{$this->unique_menu_id}_search'
-                                        class='btn {$this->settings->search_button_type}'>
-                                        <i class='{$this->settings->search_glyphicon}'></i>{$this->settings->search_label}</label>";
+                if ($this->settings->search_label != '' || $this->settings->search_glyphicon != '' ) {
+                    $html .= "\n<span class='input-group-btn'>
+                                       <button for='{$this->unique_menu_id}_search'
+                                               type='submit'
+                                               class='btn {$this->settings->search_button_type}'>";
                 }
-
-                $html .= "            </div>
+                if ($this->settings->search_label != '') {
+                    $html .= "{$this->settings->search_label}";
+                }
+                if ($this->settings->search_glyphicon != '' ) {
+                    $html .= "\n<i class='{$this->settings->search_glyphicon}'></i>";
+                }
+                if ($this->settings->search_label != '' || $this->settings->search_glyphicon != '' ) {
+                    $html .= "\n</button>
+                        </span>";
+                }
+                $html .= "\n</div>
                             </form>
-                        </li>
-                    </ul>";
+
+                    </div>";
             }
             return $html;
         }

@@ -19,7 +19,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
         {
             //Append inline to the type to ensure the settings errors don't get moved under h2
             add_action('admin_notices', function() use ($code, $msg, $type) {
-                add_settings_error(static::$option_group_page_name, $code, $msg, $type . " inline");
+                add_settings_error(My_Plugin_Admin_Notice::$option_group_page_name, $code, $msg, $type . " inline");
             } );
         }
 

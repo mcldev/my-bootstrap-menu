@@ -41,6 +41,9 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
             //Add the local css here
             wp_enqueue_style('my-bootstrap-menu-admin-styles', plugins_url('/css/my-bootstrap-menu-admin-styles.css', __FILE__), array('my-plugin-styles'), rand(111, 9999));
 
+            //Add the custom interface scripts
+            wp_register_script('my-bootstrap-menu-admin-scripts', MY_BOOTSTRAP_MENU_PLUGIN_URL . '/inc/js/my-bootstrap-menu-admin.js', array('jquery'), rand(111, 9999));
+            wp_enqueue_script('my-bootstrap-menu-admin-scripts');
         }
     }
 }

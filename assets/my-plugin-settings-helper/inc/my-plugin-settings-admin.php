@@ -69,17 +69,18 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
          * Base class for creating a settings class for each project - settings and sections can be fed in using the abstract functions below.
          *  These will be registered and a settings page can then be built from these. Errors checks can also be added on load/validation.
          *
-         * @param $option_group_page_name       string Unique name for the group / page - can be an existing group or page - will be prepended to the settings input name
-         * @param $option_settings_db_name      string Unique name for saving/loading from the WP db
-         * @param $page_title
-         * @param $menu_title
-         * @param $summary_text
-         * @param string $parent_page_location
-         * @param string $user_capability
-         * @param null $main_menu_icon_url
-         * @param null $main_menu_position
-         * @param null $current_plugin_version number Version Id is saved with the options used to check whether existing options work with a later version
-         * @param null $min_required_version number Minimum Version Id used to check if the saved settings work with this version
+         * @param $settings_args
+         * @internal param string $option_group_page_name Unique name for the group / page - can be an existing group or page - will be prepended to the settings input name
+         * @internal param string $option_settings_db_name Unique name for saving/loading from the WP db
+         * @internal param $page_title
+         * @internal param $menu_title
+         * @internal param $summary_text
+         * @internal param string $parent_page_location
+         * @internal param string $user_capability
+         * @internal param null $main_menu_icon_url
+         * @internal param null $main_menu_position
+         * @internal param null $current_plugin_version number Version Id is saved with the options used to check whether existing options work with a later version
+         * @internal param null $min_required_version number Minimum Version Id used to check if the saved settings work with this version
          */
         public function __construct($settings_args)
         {
@@ -144,7 +145,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
         }
 
         /**
-         * Determines if the settings have a unique id field, to save/load from the settings db.
+         * Determines if the settings have a type of input field, to save/load from the settings db.
          * @return bool
          */
         public function requires_input_type($input_type)
@@ -152,7 +153,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
             //Set to false by default
             $requires_input_type = false;
 
-            //Else search all nodes to see if one is a unique id field, then set as true
+            //Else search all nodes to see if one is of type (e.g. unique id field), then set as true
             foreach ($this->settings_nodes as $key => $settings_node) {
                 if ($settings_node->input_type == $input_type) {
                     $requires_input_type = true;
@@ -223,10 +224,8 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
          */
         public function get_unique_id_select_options()
         {
-            if (!$this->has_unique_id())
-                return;
-
-            return $this->settings_nodes[$this->_unique_id_node_key]->select_options;
+            if ($this->has_unique_id())
+                return $this->settings_nodes[$this->_unique_id_node_key]->select_options;
         }
 
         /**
@@ -269,11 +268,11 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
         {
             foreach ($this->settings_nodes as $key => $settings_node) {
                 add_settings_field($settings_node->id,                      // unique input id = [groupname]_[id]
-                    $settings_node->title,                  // setting title
-                    array($this, 'settings_field_callback'),// display callback
-                    $this->option_group_page_name,          // settings page
-                    $settings_node->section,                // settings section
-                    $settings_node->get_additional_args()); // additional args,
+                                    $settings_node->title,                  // setting title
+                                    array($this, 'settings_field_callback'),// display callback
+                                    $this->option_group_page_name,          // settings page
+                                    $settings_node->section,                // settings section
+                                    $settings_node->get_additional_args()); // additional args,
             }
         }
 
@@ -381,8 +380,11 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
 
         /**
          * Add settings errors on loading of settings
-         * @param $message
+         * @param $code
+         * @param $msg
          * @param string $type
+         * @return mixed|void
+         * @internal param $message
          */
         public function add_admin_notice($code, $msg, $type = My_Plugin_Notice_Type::Error )
         {
@@ -488,7 +490,8 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
 
         /**
          * Add one section node
-         * @param My_Plugin_Settings_Node $settings_node
+         * @param My_Plugin_Section_Node $section_node
+         * @internal param My_Plugin_Settings_Node $settings_node
          */
         public function add_section_node(My_Plugin_Section_Node $section_node)
         {
@@ -503,7 +506,8 @@ namespace My_Bootstrap_Menu_Plugin_Namespace{
 
         /**
          * Add multiple section nodes in a array
-         * @param array $settings_nodes
+         * @param array $section_nodes
+         * @internal param array $settings_nodes
          */
         public function add_section_nodes(array $section_nodes)
         {

@@ -38,8 +38,8 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
         /**
          * Converts a key value to lower case and replaces spaces with '_'
-         * @param $value
          * @return string
+         * @internal param $value
          */
         public function get_tab_key()
         {

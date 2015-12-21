@@ -46,7 +46,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
          * Current and Minimum required plugin versions to work with the saved settings
          * @var
          */
-        private $current_plugin_version;
+        public $current_plugin_version;
 
         /**
          * Stores the parent plugin basefile name, for registration/activation hooks
@@ -77,9 +77,11 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
         /**
          * Abstract function for adding an admin notice - as Admin_Notice in admin screen - html error on public
-         * @param $message
+         * @param $code
+         * @param $msg
          * @param string $type
          * @return mixed
+         * @internal param $message
          */
         abstract public function add_admin_notice($code, $msg, $type = My_Plugin_Notice_Type::Error );
 

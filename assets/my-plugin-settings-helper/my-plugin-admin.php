@@ -113,14 +113,9 @@ namespace My_Bootstrap_Menu_Plugin_Namespace
         private $settings;
 
         /**
-         * The Class for displaying Admin Notices - displays saved admin notices from Admin Settings
-         * @var
-         */
-        private $admin_notice_display;
-
-        /**
          * The url for this file
          * @var
+         * @return string return the url
          */
         private function get_plugin_url()
         {
@@ -131,18 +126,11 @@ namespace My_Bootstrap_Menu_Plugin_Namespace
             return $_plugin_url;
         }
 
-        /**
+        /***
          * Create the page for the settings
-         * @param plugin_basename
-         * @param option_group_page_name
-         * @param page_title
-         * @param page_icon_url
-         * @param menu_title
-         * @param summary_text
-         * @param parent_page_location
-         * @param string $user_capability
-         * @param null $main_menu_icon_url
-         * @param null $main_menu_position
+         * My_Plugin_Admin constructor.
+         * @param $page_args
+         * @param My_Plugin_Settings_Admin $admin_settings
          */
         function __construct($page_args, My_Plugin_Settings_Admin $admin_settings)
         {

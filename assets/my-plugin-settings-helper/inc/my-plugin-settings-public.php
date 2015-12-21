@@ -21,8 +21,11 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
         /**
          * Add settings errors on loading of settings
-         * @param $message
+         * @param $code
+         * @param $msg
          * @param string $type
+         * @return mixed|void
+         * @internal param $message
          */
         public function add_admin_notice($code, $msg, $type = My_Plugin_Notice_Type::Error )
         {
@@ -61,6 +64,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
         /**
          * Returns the key=>value array for settings
+         * @param null $unique_id
          * @return array
          */
         public function get_settings_values($unique_id = null)

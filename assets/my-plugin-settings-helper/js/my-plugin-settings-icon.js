@@ -41,7 +41,6 @@ jQuery(document).ready(function($) {
      * Trash icon to remove the value and image
      */
     $(icon_clear_selector).click(function(){
-
         var button = $(this);
         var icon_value_id = button.attr('id').replace('_clear', '');
         setIconValue(icon_value_id, '');
@@ -66,7 +65,7 @@ jQuery(document).ready(function($) {
             icon_select_list_selector = dashicon_select_list_selector;
         }
 
-        // Display the Dashicon selector
+        // Display the Glyphicon/Dashicon selector
         show_icon_selector();
 
         /**
@@ -83,31 +82,18 @@ jQuery(document).ready(function($) {
     });
 
 
-
-
     /**
-     * Toggles the Icon selector visibility
-     */
-    function show_hide_icon_selector() {
-
-        var overlay = $(icon_overlay_selector);
-        overlay.visibilityToggle();
-    }
-
-    /**
-     * Shows the Icon selector visibility
+     * Shows the Icon selector
      */
     function show_icon_selector() {
-
         var overlay = $(icon_overlay_selector);
         overlay.visibilityVisible();
     }
 
     /**
-     * Hides the Icon selector visibility
+     * Hides the Icon selector
      */
     function hide_icon_selector() {
-
         var overlay = $(icon_overlay_selector);
         overlay.visibilityHidden();
     }
@@ -128,11 +114,9 @@ jQuery(document).ready(function($) {
 
         //Removes the existing dashicon, removes the hidden class, adds the display class and the dashicon (if set)
         $('#' + icon_preview_id).removeClass(function (index, classes) {
-            var remove_classes = (classes.match (/(^|\s)dashicon\S+/gmi) || []).join(' ');
-            return remove_classes;
+            return (classes.match (/(^|\s)dashicon\S+/gmi) || []).join(' ');
         }).removeClass(function (index, classes) {
-            var remove_classes = (classes.match (/(^|\s)glyphicon\S+/gmi) || []).join(' ');
-            return remove_classes;
+            return (classes.match (/(^|\s)glyphicon\S+/gmi) || []).join(' ');
         }).removeClass('my_plugin_hidden')
             .addClass(display_class + ' ' + icon_value)
             .prop('title', icon_value)
@@ -143,7 +127,7 @@ jQuery(document).ready(function($) {
         }, 500);
 
     }
-});
 
+});
 
 

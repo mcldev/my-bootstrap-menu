@@ -4,7 +4,7 @@ Author URI: http://www.michaelcarder.com
 Plugin URI: http://www.codetoolbox.net/wordpress/wordpress-plugins/my-bootstrap-menu/
 Tags: bootstrap, navbar, nav-menu, menu, submenu, drop-down submenu, responsive, mobile, menu walker, button, tabs, pills, alignment, inverse, logo, title, login, register, image select, my plugin settings
 Requires at least: 4.0
-Tested up to: 4.3.1
+Tested up to: 4.4
 Stable tag: 1.0.6
 Header tagline: Customizable plugin that applies the Bootstrap formatting classes to any Wordpress Navigation Menu
 License: GPLv2 or later
@@ -76,7 +76,7 @@ My Bootstrap Menu can be installed in a few easy steps:
 
 3. Inside Wordpress admin, go to Appearance > My Bootstrap Menu
 4. Select which menu or location to Bootstrap and select the checkbox: 'Bootstrap this menu'
-5. Configure any other setttings
+5. Configure any other settings
 6. Save and go to your site to see your new Menu!
 
 ## Frequently Asked Questions 
@@ -85,14 +85,14 @@ All settings are managed in Wordpres Admin > Appearance > My Bootstrap Menu
 
 ### Why isn't my menu being bootstrapped? 
 There are a couple of things to make sure of:
-1. The checkbox 'Bootstrap this menu' is checked
-2. The settings are saved
+1. The checkbox 'Bootstrap this menu' is checked for your menu or location
+2. The settings are saved!
 3. You are either loading the plugin's version of Bootstrap, or you have one loaded with your theme
 4. The menu is being called by name correctly
 5. The theme location is being called correctly in your theme files
 
-### Does this plugin work with newest WP version 
-Yes, this plugin works fine with WordPress 4.2.2
+### Does this plugin work with newest WP version? 
+Yes, this plugin works fine with WordPress 4.3.1
 
 ## Screenshots 
 1. The main settings page, showing the list of menus and the main tabs
@@ -104,6 +104,33 @@ Yes, this plugin works fine with WordPress 4.2.2
 7. Select a logo to display on your menu
 
 ## Changelog 
+
+### 1.1.0
+**First major revision - ALWAYS CHECK BEFORE UPGRADING LIVE SITES**
+Updated and checked for Wordpress 4.4 
+Updated Internal Bootstrap version to 3.3.6.
+Changed dropdown menu icons to use Glyphicons (i.e. use with Bootstrap)
+Changed search field classes - improved appearance on mobile mode.
+Removed on-hover sub-menu styles... this is to keep consistent with Bootstrap being mobile/tablet friendly.
+Fixed submenu headings are links - requires clicking the caret for submenus.
+Fixed Tab, Button, Button Group Menus to show active correctly.
+Fixes for the Pills, Buttons, Button Group and Tabs with submenus on collapse.
+Reduced margins on Tabs to show at the bottom of the navbar.
+Removed duplicate class declaration on menu types.
+Displays either 1) caret (or glyphicon) for top level menu and 2) right caret for submenus.
+Fixes for php versions <5.3
+My-Plugin-Settings-Helper - updated
+ 
+### 1.0.6
+Fix to use caret, instead of WP dashicons by default. Load Dashicons if selected.
+
+### 1.0.5
+Fixes for php versions <5.4. 
+Possible fix for object instead of string for unique id. 
+Added ability to select Dashicon for dropdown menu items.
+
+### 1.0.4
+Added 'active' class to all parent menu and submenu items.
 
 ### 1.0.3 
 Fixes for Wordpress 4.3.0 compatibility. Menu names being returned as menu objects in the latest WP release.

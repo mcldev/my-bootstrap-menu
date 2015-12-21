@@ -41,7 +41,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
                 return;
             }
 
-            if (array_key_exists('load_bootstrap_custom_styles', $load_styles)) {
+            if (isset($load_styles['load_bootstrap_custom_styles'])) {
                 wp_register_style('my-bootstrap-menu-custom-styles', MY_BOOTSTRAP_MENU_PLUGIN_URL . '/inc/css/bootstrap.custom.css', null, rand(111, 9999));
                 wp_enqueue_style('my-bootstrap-menu-custom-styles');
             }
@@ -52,7 +52,7 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
             }
 
             if (isset($load_styles['load_bootstrap_custom_scripts'])) {
-                wp_register_script('my-bootstrap-menu-custom-scripts', MY_BOOTSTRAP_MENU_PLUGIN_URL . '/inc/js/bootstrap.custom.js', array('jquery'));
+                wp_register_script('my-bootstrap-menu-custom-scripts', MY_BOOTSTRAP_MENU_PLUGIN_URL . '/inc/js/bootstrap.custom.js', array('jquery'), rand(111, 9999));
                 wp_enqueue_script('my-bootstrap-menu-custom-scripts');
             }
 

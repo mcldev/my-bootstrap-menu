@@ -50,8 +50,8 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
 
         /**
          * Lists all the menus and themes so the user can choose a unique value for the setting
-         * @param $first string menu string optional
          * @return string
+         * @internal param string $first menu string optional
          */
         public static function list_menus_and_theme_locations()
         {

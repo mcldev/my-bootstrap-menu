@@ -95,8 +95,8 @@ namespace My_Bootstrap_Menu_Plugin_Namespace {
         //Load installer to register Activate/Deactivate/Uninstall hooks...
         // (needs to be run before init hook of main plugin)
         $installer = new My_Bootstrap_Menu_Installer(array('option_group_page_name' => OPTION_GROUP_PAGE_NAME,
-            'option_settings_db_name' => OPTION_SETTINGS_DB_NAME,
-            'plugin_basefile' => __FILE__));
+                                                            'option_settings_db_name' => OPTION_SETTINGS_DB_NAME,
+                                                            'plugin_basefile' => __FILE__));
     } else {
 
         //** Public **
