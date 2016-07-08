@@ -4,7 +4,7 @@ Author URI: http://www.michaelcarder.com
 Plugin URI: http://www.codetoolbox.net/wordpress/wordpress-plugins/my-bootstrap-menu/
 Tags: bootstrap, navbar, nav-menu, menu, submenu, drop-down submenu, responsive, mobile, menu walker, button, tabs, pills, alignment, inverse, logo, title, login, register, image select, my plugin settings
 Requires at least: 4.0
-Tested up to: 4.4
+Tested up to: 4.5.3
 Stable tag: 1.1.0
 Header tagline: Customizable plugin that applies the Bootstrap formatting classes to any Wordpress Navigation Menu
 License: GPLv2 or later
@@ -98,6 +98,9 @@ Yes, this plugin works fine with WordPress 4.2.2
 7. Select a logo to display on your menu
 
 == Changelog ==
+
+= 1.1.1 =
+Minor fix for Admin site for Firefox
 
 = 1.1.0 =
 **First major revision - ALWAYS CHECK BEFORE UPGRADING LIVE SITES**

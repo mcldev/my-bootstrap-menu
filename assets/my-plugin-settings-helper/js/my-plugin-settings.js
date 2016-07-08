@@ -22,7 +22,7 @@ jQuery(document).ready(function($) {
      * Handles the Nav-tabs - sets active tab and unhides/hides sections
      */
     $('.nav-tab-wrapper > .my_plugin_tab')
-        .click(function(){
+        .click(function(event){
             event.preventDefault();
             var tab_id = $(this).prop('id');
 
